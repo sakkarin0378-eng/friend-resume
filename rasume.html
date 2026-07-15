@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Nanthakan Minsiri</title>
+    <!-- เรียกใช้ฟอนต์ Kanit จาก Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- เรียกใช้ไอคอนจาก Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a; /* สีน้ำเงินเข้ม */
+            --secondary-blue: #3b82f6; /* สีน้ำเงินสว่าง */
+            --light-bg: #f8fafc; /* สีเทาอ่อนมาก สำหรับพื้นหลังแท็บซ้าย */
+            --text-dark: #1f2937; /* สีเทาเข้มเกือบดำ สำหรับตัวหนังสือหลัก */
+            --text-gray: #475569; /* สีเทากลาง สำหรับรายละเอียด */
+            --border-gray: #e2e8f0; /* สีเทาอ่อนสำหรับเส้นขอบ */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #cbd5e1; /* พื้นหลังด้านนอกเรซูเม่ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .resume-wrapper {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* คอลัมน์ซ้าย (สีเทาอ่อน) */
+        .left-column {
+            width: 35%;
+            background-color: var(--light-bg);
+            padding: 40px 30px;
+            border-right: 1px solid var(--border-gray);
+        }
+
+        .profile-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* คอลัมน์ขวา (สีขาว) */
+        .right-column {
+            width: 65%;
+            padding: 50px 40px;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            font-size: 36px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 22px;
+            font-weight: 500;
+            border-bottom: 2px solid var(--border-gray);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            margin-top: 35px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .left-column h2 {
+            font-size: 18px;
+            margin-top: 30px;
+            border-bottom-color: #cbd5e1;
+        }
+
+        /* ส่วนข้อมูลติดต่อ */
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--text-gray);
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+        .contact-list i {
+            width: 30px;
+            font-size: 18px;
+            color: var(--secondary-blue);
+        }
+
+        /* ส่วนทักษะ */
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .skill-bar-bg {
+            height: 8px;
+            background-color: #cbd5e1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background-color: var(--secondary-blue);
+            border-radius: 10px;
+        }
+
+        /* โปรแกรมที่ถนัด */
+        .software-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: #ffffff;
+            color: var(--primary-blue);
+            border: 1px solid var(--secondary-blue);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* เกี่ยวกับฉัน */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table td {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--text-gray);
+            vertical-align: top;
+        }
+
+        .info-table td:first-child {
+            width: 110px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* ประวัติการศึกษา */
+        .education-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary-blue);
+            border-radius: 50%;
+        }
+
+        .edu-level {
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        .edu-school {
+            color: var(--text-gray);
+            font-size: 15px;
+            margin-top: 2px;
+        }
+
+        /* งานอดิเรก */
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .hobby-card {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-gray);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hobby-card i {
+            font-size: 24px;
+            color: var(--secondary-blue);
+        }
+
+        .hobby-card span {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* Responsive Design สำหรับหน้าจอมือถือ */
+        @media (max-width: 768px) {
+            .resume-wrapper {
+                flex-direction: column;
+            }
+            .left-column, .right-column {
+                width: 100%;
+            }
+            .left-column {
+                border-right: none;
+                border-bottom: 1px solid var(--border-gray);
+            }
+            .hobby-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-wrapper">
+        
+        <!-- ================= ซ้ายมือ (คอลัมน์แถบสีเทาอ่อน) ================= -->
+        <div class="left-column">
+            
+            <div class="profile-container">
+                <!-- ใส่ชื่อไฟล์รูปภาพให้ตรงกับที่แนบมา -->
+                <img src="358b1a37-964e-4952-b66c-f5fa843b74d4.jpg" alt="Profile Nanthakan" class="profile-img" onerror="this.onerror=null; this.src='https://placehold.co/180x180/1e3a8a/ffffff?text=Image';">
+            </div>
+
+            <h2><i class="fa-solid fa-address-book"></i> ข้อมูลติดต่อ</h2>
+            <ul class="contact-list">
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    092-978-1197
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    rxideak2007@gmail.com
+                </li>
+                <li>
+                    <i class="fa-brands fa-line"></i>
+                    idea_5645
+                </li>
+            </ul>
+
+            <h2><i class="fa-solid fa-chart-pie"></i> ทักษะ</h2>
+            
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>ตัดต่อ</span>
+                    <span>60%</span>
+                </div>
+                <div class="skill-bar-bg">
+                    <div class="skill-bar-fill" style="width: 60%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>วาดรูป</span>
+                    <span>50%</span>
+                </div>
+                <div class="skill-bar-bg">
+                    <div class="skill-bar-fill" style="width: 50%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>ถ่ายรูป</span>
+                    <span>40%</span>
+                </div>
+                <div class="skill-bar-bg">
+                    <div class="skill-bar-fill" style="width: 40%;"></div>
+                </div>
+            </div>
+
+            <h2><i class="fa-solid fa-laptop-code"></i> โปรแกรมที่ถนัด</h2>
+            <div class="software-tags">
+                <span class="tag">Ps (Photoshop)</span>
+                <span class="tag">Ai (Illustrator)</span>
+                <span class="tag">Pr (Premiere Pro)</span>
+                <span class="tag">An (Animate)</span>
+                <span class="tag">CapCut</span>
+            </div>
+
+        </div>
+
+        <!-- ================= ขวามือ (คอลัมน์หลักสีขาว) ================= -->
+        <div class="right-column">
+            
+            <h1>Nanthakan Minsiri</h1>
+            
+            <h2 style="margin-top: 15px;"><i class="fa-regular fa-id-card"></i> เกี่ยวกับฉัน</h2>
+            <table class="info-table">
+                <tr>
+                    <td>ชื่อเล่น</td>
+                    <td>ไอเดีย</td>
+                </tr>
+                <tr>
+                    <td>อายุ</td>
+                    <td>17 ปี</td>
+                </tr>
+                <tr>
+                    <td>วันเกิด</td>
+                    <td>13 / เม.ย. / 2550</td>
+                </tr>
+                <tr>
+                    <td>สถานที่เกิด</td>
+                    <td>ราชบุรี ตำบลบ้านสิงห์ อำเภอโพธาราม จังหวัดราชบุรี</td>
+                </tr>
+                <tr>
+                    <td>ที่อยู่ปัจจุบัน</td>
+                    <td>บ้านเลขที่ 16/3 หมู่ 3</td>
+                </tr>
+            </table>
+
+            <h2><i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษา</h2>
+            <div class="education-item">
+                <div class="edu-level">มัธยมศึกษาตอนปลาย</div>
+                <div class="edu-school">วิทยาลัยเทคนิคโพธาราม</div>
+            </div>
+            <div class="education-item">
+                <div class="edu-level">มัธยมศึกษาตอนต้น</div>
+                <div class="edu-school">โรงเรียนอนุบาลโพธาราม</div>
+            </div>
+
+            <h2><i class="fa-solid fa-gamepad"></i> งานอดิเรก</h2>
+            <div class="hobby-grid">
+                <div class="hobby-card">
+                    <i class="fa-solid fa-palette"></i>
+                    <span>วาดรูป</span>
+                </div>
+                <div class="hobby-card">
+                    <i class="fa-solid fa-film"></i>
+                    <span>ตัดต่อวิดีโอ</span>
+                </div>
+                <div class="hobby-card">
+                    <i class="fa-solid fa-headphones"></i>
+                    <span>ฟังเพลง</span>
+                </div>
+                <div class="hobby-card">
+                    <i class="fa-solid fa-video"></i>
+                    <span>ถ่ายคลิปเกี่ยวกับเกม</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
